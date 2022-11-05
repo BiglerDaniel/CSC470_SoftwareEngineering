@@ -343,13 +343,16 @@ class ChocAnGUI:
         tk.Label(tab2,text ="TotalFee: "+str(fee)).grid(column = 0,row = 7, padx = 0,pady = 0)
         
     def addAccount(self):
-        Manager.addAccount(self.name.get(), int(self.number.get()), self.address.get(), self.city.get(), self.state.get(), self.zipCode.get(), self.accCheck.get())
+        if len(self.number.get()) != 9:
+            tk.messagebox.showerror(title="Insufficient Account Number", message="Account number needs to be 9 digit")
+        else:
+            Manager.addAccount(self.name.get(), int(self.number.get()), self.addr.get(), self.city.get(), self.state.get(), self.zipCode.get(), self.accCheck.get())
         
     def removeAccount(self):
-        Manager.removeAccount(int(self.number.get()))
+        Manager.removeAccount(int(self.rNumber.get()))
         
     def updateAccount(self):
-        Manager.addAccount(self.name.get(), int(self.number.get()), self.address.get(), self.city.get(), self.state.get(), self.zipCode.get())
+        Manager.addAccount(self.nName.get(), int(self.nNumber.get()), self.nAddr.get(), self.nCity.get(), self.nState.get(), self.nZipCode.get())
         
         
     def makeServiceClaim(self):
