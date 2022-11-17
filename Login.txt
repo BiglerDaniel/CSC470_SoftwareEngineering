@@ -1,0 +1,7 @@
+{
+1233:['Sam Smith', 1233, 'Down', 'downtown', 'Nc', '28282', 1, 'SSmith'],
+1232:['Tom Lake', 1232, 'DownUp', 'Uptown', 'Nc', '28282', 0, 'TLake'],
+123456789:['M jin', 123456789, '1200 Murchison Rd', 'Fayetteville', 'NC', '28301', 0, 'Mjin'],
+804452505:['Bob Laker', 804452505, 'Up', 'Downtown', 'NC', '23801', -1, 'BLaker'],
+415450471:['Jake Looks', 415450471, '787 Upwood st', 'Downtown', 'NC', '28301', -2, 'JLooks'],
+}
