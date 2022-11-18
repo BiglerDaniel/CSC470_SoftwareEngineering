@@ -332,7 +332,7 @@ class Manager():
         f = open(path+"\\"+fileName, "w")
         f.write(f"Service Name: {serviceName}\nService Date: {serviceDate}\nService Code: {serviceCode}\nFee: ${fee:.2f}\nMember Name: {memberName}\nMember Number: {memberNumber}\nProvider Name: {providerName}\nProvider Number: {providerNumber}\nComments: {comments}\n")
         f.close()
-        self.setMemberDetails(memberName,fee, serviceDate)
+        Provider.setMemberDetails(memberName,fee, serviceDate)
         newPath = dir_path+"\\"+providerName+"\\Claims"
         if not os.path.exists(newPath):
             os.makedirs(newPath)
