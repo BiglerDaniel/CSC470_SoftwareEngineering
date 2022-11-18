@@ -306,8 +306,12 @@ class Manager():
             f.close()
 
     def addClaim(self, memName, memNum, proName, proNum, serviceName, serviceCode, fee, comments):
-        Member.setInfo(Member, memName, memNum)
-        Provider.setInfo(Provider, proName, proNum)
+        mUsernameLst = memName.split(" ")
+        mUserName = mUsernameLst[0][0]+mUsernameLst[-1]
+        pUsernameLst = proName.split(" ")
+        pUserName = pUsernameLst[0][0]+pUsernameLst[-1]
+        Member.setInfo(Member, mUserName, memNum)
+        Provider.setInfo(Provider, pUserName, proNum)
         #serviceName = input('Service name (20 characters):\n')
         currentDate = now.strftime("%m-%d-%Y %H:%M:%S")
         serviceDate = now.strftime("%m-%d-%Y")
@@ -346,8 +350,12 @@ class Manager():
          
     def updateClaim(self,memName,memNum,proName, proNum, fileName, serviceName, serviceCode, fee, comments):
         found = False
-        Member.setInfo(Member, memName, memNum)
-        Provider.setInfo(Provider, proName, proNum)
+        mUsernameLst = memName.split(" ")
+        mUserName = mUsernameLst[0][0]+mUsernameLst[-1]
+        pUsernameLst = proName.split(" ")
+        pUserName = pUsernameLst[0][0]+pUsernameLst[-1]
+        Member.setInfo(Member, mUserName, memNum)
+        Provider.setInfo(Provider,pUserName, proNum)
         path = dir_path+"\\"+memName
         for root, dirs, files in os.walk(path):
             for file in files:
