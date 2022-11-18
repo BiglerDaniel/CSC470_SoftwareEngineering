@@ -650,7 +650,7 @@ class ChocAnGUI:
         codes = ast.literal_eval(data)
         obj.close
         if int(self.sCode.get()) in codes:
-            Manager.makeClaim(Manager, self.mName.get(), self.mNumber.get(), self.pName,get(), self.pNumber.get(), self.sName.get(), self.sCode.get(), float(codes.get(int(self.sCode.get()))), self.comment.get())
+            Manager.addClaim(Manager, self.mName.get(), self.mNumber.get(), self.pName.get(), self.pNumber.get(), self.sName.get(), self.sCode.get(), float(codes.get(int(self.sCode.get()))), self.comment.get())
         else:
            tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
         
@@ -663,7 +663,7 @@ class ChocAnGUI:
         codes = ast.literal_eval(data)
         obj.close
         if int(self.uCode.get()) in codes:
-            Manager.makeClaim(Manager, self.uName.get(), self.uNumber.get(), self.uName,get(), self.uNumber.get(), self.uName.get(), self.uCode.get(), float(codes.get(int(self.uCode.get()))), self.ucomment.get())
+            Manager.updateClaim(Manager, self.uName.get(), self.uNumber.get(), self.uName,get(), self.uNumber.get(), self.uName.get(), self.uCode.get(), float(codes.get(int(self.uCode.get()))), self.ucomment.get())
         else:
            tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
       
