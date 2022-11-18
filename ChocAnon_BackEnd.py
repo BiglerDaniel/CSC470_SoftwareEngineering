@@ -312,7 +312,6 @@ class Manager():
         pUserName = pUsernameLst[0][0]+pUsernameLst[-1]
         Member.setInfo(Member, mUserName, memNum)
         Provider.setInfo(Provider, pUserName, proNum)
-        print(mUserName,pUserName)
         #serviceName = input('Service name (20 characters):\n')
         currentDate = now.strftime("%m-%d-%Y %H:%M:%S")
         serviceDate = now.strftime("%m-%d-%Y")
@@ -324,7 +323,7 @@ class Manager():
         providerNumber = Provider.getInfo(Provider)[1]
         #comments = input('comments(100 characters)(optional):\n')
         
-        path = dir_path+"\\"+memberName
+        path = dir_path+"\\"+memberName+"\\Claims"
         if not os.path.exists(path):
             os.makedirs(path)
         
@@ -337,7 +336,7 @@ class Manager():
      
     def removeClaim(self,memberName,fileName):
         found = False
-        path = dir_path+"\\"+memberName
+        path = dir_path+"\\"+memberName+"\\Claims"
         for root, dirs, files in os.walk(path):
             for file in files:
                 if file == fileName+'.txt':
@@ -357,7 +356,7 @@ class Manager():
         pUserName = pUsernameLst[0][0]+pUsernameLst[-1]
         Member.setInfo(Member, mUserName, memNum)
         Provider.setInfo(Provider,pUserName, proNum)
-        path = dir_path+"\\"+memName
+        path = dir_path+"\\"+memName+"\\Claims"
         for root, dirs, files in os.walk(path):
             for file in files:
                 if file == fileName+'.txt':
