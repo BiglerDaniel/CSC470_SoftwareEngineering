@@ -355,19 +355,19 @@ class ChocAnGUI:
         
         upNameLabel = tk.Label(block3, text="Provider Name:").grid(row=3, column=0)
         self.upName = tk.StringVar()
-        upNameEntry = tk.Entry(block3, textvariable=self.uName).grid(row=3, column=1)
+        upNameEntry = tk.Entry(block3, textvariable=self.upName).grid(row=3, column=1)
         
         upNumberLabel = tk.Label(block3,text="Provider Number:").grid(row=4, column=0)  
         self.upNumber = tk.StringVar()
-        upNumberEntry = tk.Entry(block3, textvariable=self.uNumber).grid(row=4, column=1)
+        upNumberEntry = tk.Entry(block3, textvariable=self.upNumber).grid(row=4, column=1)
         
         uFileLabel = tk.Label(block3, text="Member File Name:").grid(row=5, column=0)
         self.uFile = tk.StringVar()
         uFileEntry = tk.Entry(block3, textvariable=self.uFile).grid(row=5, column=1)
         
-        uNameLabel = tk.Label(block3, text="Service name (20 characters):").grid(row=6, column=0)
-        self.uName = tk.StringVar()
-        uNameEntry = tk.Entry(block3, textvariable=self.uName).grid(row=6, column=1)
+        uSNameLabel = tk.Label(block3, text="Service name (20 characters):").grid(row=6, column=0)
+        self.uSName = tk.StringVar()
+        uSNameEntry = tk.Entry(block3, textvariable=self.uSName).grid(row=6, column=1)
         
         uCodeLabel = tk.Label(block3, text="Service code (6 digit):").grid(row=7, column=0)
         self.uCode = tk.StringVar()
@@ -663,7 +663,7 @@ class ChocAnGUI:
         codes = ast.literal_eval(data)
         obj.close
         if int(self.uCode.get()) in codes:
-            Manager.updateClaim(Manager, self.uName.get(), int(self.uNumber.get()), self.uName,get(), int(self.uNumber.get()), self.uName.get(), self.uCode.get(), float(codes.get(int(self.uCode.get()))), self.ucomment.get())
+            Manager.updateClaim(Manager, self.uName.get(), int(self.uNumber.get()), self.upName.get(), int(self.upNumber.get()), self.uFile.get(),self.uSName.get(), self.uCode.get(), float(codes.get(int(self.uCode.get()))), self.ucomment.get())
         else:
            tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
       

@@ -330,7 +330,7 @@ class Manager():
         fileName = "Claim_"+ currentDate.replace(":","-").replace(" ","_")+".txt"
         
         f = open(path+"\\"+fileName, "w")
-        f.write(f"Service Name: {serviceName}\nService Date: {serviceDate}\nService Code: {serviceCode}\nFee: ${fee:.2f}\nMember Name: {memberName}\nMember Number: {memberNumber}\nProvider Name: {providerName}\nProvider Number: {providerNumber}\nComments: {comments}\n")
+        f.write(f"Service Name: {serviceName}\nCurrent date and time: {currentDate}\nService Date: {serviceDate}\nService Code: {serviceCode}\nFee: ${fee:.2f}\nMember Name: {memberName}\nMember Number: {memberNumber}\nProvider Name: {providerName}\nProvider Number: {providerNumber}\nComments: {comments}\n")
         f.close()
         Provider.setMemberDetails(memberName,fee, serviceDate)
         newPath = dir_path+"\\"+providerName+"\\Claims"
@@ -380,14 +380,14 @@ class Manager():
             providerName = Provider.getInfo(Provider)[0]
             providerNumber = Provider.getInfo(Provider)[1]
             #comments = input('comments(100 characters)(optional):\n')
-            f = open(path+"\\"+fileName, "w")
-            f.write(f"Service Name: {serviceName}\nService Date: {serviceDate}\nService Code: {serviceCode}\nFee: ${fee}\nMember Name: {memberName}\nMember Number: {memberNumber}\nProvider Name: {providerName}\nProvider Number: {providerNumber}\nComments: {comments}\n")
+            f = open(path+"\\"+fileName+'.txt', "w")
+            f.write(f"Service Name: {serviceName}\nCurrent date and time: {currentDate}\nService Date: {serviceDate}\nService Code: {serviceCode}\nFee: ${fee}\nMember Name: {memberName}\nMember Number: {memberNumber}\nProvider Name: {providerName}\nProvider Number: {providerNumber}\nComments: {comments}\n")
             f.close()
         Provider.setMemberDetails(memberName,fee, serviceDate)
         newPath = dir_path+"\\"+providerName+"\\Claims"
         if not os.path.exists(newPath):
             os.makedirs(newPath)
-        shutil.copy2(path+"\\"+fileName,newPath+'\\'+fileName)
+        shutil.copy2(path+"\\"+fileName+'.txt',newPath+'\\'+fileName+'.txt')
         
     
     def report(self,memberName,memberNumber, month,srtDay,endDay,year):
@@ -469,6 +469,7 @@ class Manager():
                 content = f2.readlines()
                 f2.close()
                 if content != []:
+                    print(content)
                     currentDate = content[1]
                     serviceDate = content[2]
                     memberName = content[5]
@@ -492,7 +493,7 @@ class Manager():
 # Member.setInfo(Member, "Bob", 1234)
 # Member.getDetails(Member)
 #Manager.report(Manager, "Bob Laker", 804452505, 11, 15, 16,2022)
-# Manager.summaryReport("Sam", 1233)
+#Manager.summaryReport("Sam Smith", 1233, 11, 17, 17, 2022)
 # print(now)
 # print(dt_string)
 ##Manager.removeAccount(1232)
