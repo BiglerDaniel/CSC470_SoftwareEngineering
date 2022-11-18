@@ -623,12 +623,15 @@ class ChocAnGUI:
             number = random.randint(0, 999999999)
             if number < 100000000:
                 number = str(number).zfill(9)
+        tk.messagebox.Message(title="Account", message="Account added")
         Manager.addAccount(self.name.get(), int(number), self.addr.get(), self.city.get(), self.state.get(), self.zipCode.get(), self.accCheck.get())
         
     def removeAccount(self):
+        tk.messagebox.Message(title="Account", message="Account removed")
         Manager.removeAccount(int(self.rNumber.get()))
         
     def updateAccount(self):
+        tk.messagebox.Message(title="Account", message="Account update")
         Manager.updateAccount(self.nName.get(), int(self.nNumber.get()), self.nAddr.get(), self.nCity.get(), self.nState.get(), self.nZipCode.get(),self.nAccCheck.get())
     
     def statusAccount(self):
@@ -640,6 +643,7 @@ class ChocAnGUI:
         codes = ast.literal_eval(data)
         obj.close
         if int(self.sCode.get()) in codes:
+            tk.messagebox.Message(title="Service Claim", message="Service Claim maded")
             Provider.makeClaim(Provider, self.sName.get(), self.sCode.get(), float(codes.get(int(self.sCode.get()))), self.comment.get())
         else:
             tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
@@ -650,11 +654,13 @@ class ChocAnGUI:
         codes = ast.literal_eval(data)
         obj.close
         if int(self.sCode.get()) in codes:
+            tk.messagebox.Message(title="Service Claim", message="Service Claim added")
             Manager.addClaim(Manager, self.m1Name.get(), int(self.m1Number.get()), self.p1Name.get(), int(self.p1Number.get()), self.sName.get(), self.sCode.get(), float(codes.get(int(self.sCode.get()))), self.comment.get())
         else:
            tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
         
     def removeServiceClaim(self):
+        tk.messagebox.Message(title="Service Claim", message="Service Claim removed")
         Manager.removeClaim(Manager, self.rName.get(), self.rFile.get())
         
     def updateServiceClaim(self):
@@ -663,14 +669,17 @@ class ChocAnGUI:
         codes = ast.literal_eval(data)
         obj.close
         if int(self.uCode.get()) in codes:
+            tk.messagebox.Message(title="Service Claim", message="Service Claim updated")
             Manager.updateClaim(Manager, self.uName.get(), int(self.uNumber.get()), self.upName.get(), int(self.upNumber.get()), self.uFile.get(),self.uSName.get(), self.uCode.get(), float(codes.get(int(self.uCode.get()))), self.ucomment.get())
         else:
            tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
       
     def submitReport(self):
+        tk.messagebox.Message(title="Report", message="Report made")
         Manager.report(Manager, self.mName.get(), int(self.mNumber.get()), int(self.sMonth.get()), int(self.sDay.get()),int(self.eDay.get()),int(self.sYear.get()))
         
     def submitSummaryReport(self):
+        tk.messagebox.Message(title="Summary Report", message="Summary Report made")
         Manager.summaryReport(self.pName.get(), int(self.pNumber.get()),int(self.spMonth.get()), int(self.spDay.get()),int(self.epDay.get()),int(self.spYear.get()))
     
     def logOut(self):
