@@ -141,7 +141,7 @@ class Provider(Member):
         if not os.path.exists(newPath):
             os.makedirs(newPath)
         shutil.copy2(path+"\\"+fileName,newPath+'\\'+fileName)
-        return "Needs to be finished"
+        
     
     def Suspend():
         name,number,address,city,state,zipCode,accCheck = Member.getInfo(Member)
@@ -332,7 +332,12 @@ class Manager():
         f = open(path+"\\"+fileName, "w")
         f.write(f"Service Name: {serviceName}\nService Date: {serviceDate}\nService Code: {serviceCode}\nFee: ${fee:.2f}\nMember Name: {memberName}\nMember Number: {memberNumber}\nProvider Name: {providerName}\nProvider Number: {providerNumber}\nComments: {comments}\n")
         f.close()
-        return "Needs to be finished"
+        self.setMemberDetails(memberName,fee, serviceDate)
+        newPath = dir_path+"\\"+providerName+"\\Claims"
+        if not os.path.exists(newPath):
+            os.makedirs(newPath)
+        shutil.copy2(path+"\\"+fileName,newPath+'\\'+fileName)
+        
      
     def removeClaim(self,memberName,fileName):
         found = False
@@ -346,7 +351,7 @@ class Manager():
             return "File does not exist"
         else:
             os.remove(path+"\\"+fileName+".txt")
-        return "Needs to be finished"
+        
          
     def updateClaim(self,memName,memNum,proName, proNum, fileName, serviceName, serviceCode, fee, comments):
         found = False
@@ -378,7 +383,12 @@ class Manager():
             f = open(path+"\\"+fileName, "w")
             f.write(f"Service Name: {serviceName}\nService Date: {serviceDate}\nService Code: {serviceCode}\nFee: ${fee}\nMember Name: {memberName}\nMember Number: {memberNumber}\nProvider Name: {providerName}\nProvider Number: {providerNumber}\nComments: {comments}\n")
             f.close()
-        return "Needs to be finished"    
+        Provider.setMemberDetails(memberName,fee, serviceDate)
+        newPath = dir_path+"\\"+providerName+"\\Claims"
+        if not os.path.exists(newPath):
+            os.makedirs(newPath)
+        shutil.copy2(path+"\\"+fileName,newPath+'\\'+fileName)
+        
     
     def report(self,memberName,memberNumber, month,srtDay,endDay,year):
         usernameLst = memberName.split(" ")
