@@ -331,13 +331,13 @@ class ChocAnGUI:
         block2 = tk.LabelFrame(tab2, text="Remove Claim", width=100,
                   height=100, borderwidth=5, relief="sunken")
         block2.grid(column=0, row=1)
-        mNameLabel = tk.Label(block2, text="Member Name:").grid(row=1, column=0)
+        rNameLabel = tk.Label(block2, text="Member Name:").grid(row=1, column=0)
         self.mName = tk.StringVar()
-        mNameEntry = tk.Entry(block2, textvariable=self.mName).grid(row=1, column=1)
+        rNameEntry = tk.Entry(block2, textvariable=self.mName).grid(row=1, column=1)
         
-        mFileLabel = tk.Label(block2, text="Member File Name:").grid(row=2, column=0)
+        rFileLabel = tk.Label(block2, text="Member File Name:").grid(row=2, column=0)
         self.mFile = tk.StringVar()
-        mFileEntry = tk.Entry(block2, textvariable=self.mFile).grid(row=2, column=1)
+        rFileEntry = tk.Entry(block2, textvariable=self.rFile).grid(row=2, column=1)
         
         tk.Button(block2, text = 'Remove Claim', fg = 'red',command = self.removeServiceClaim).grid(row=3, column=0)
         
@@ -345,41 +345,41 @@ class ChocAnGUI:
         block3 = tk.LabelFrame(tab2, text="Update Claim", width=100,
                   height=100, borderwidth=5, relief="sunken")
         block3.grid(column=1, row=0)
-        mNameLabel = tk.Label(block3, text="Member Name:").grid(row=1, column=0)
-        self.mName = tk.StringVar()
-        mNameEntry = tk.Entry(block3, textvariable=self.mName).grid(row=1, column=1)
+        uNameLabel = tk.Label(block3, text="Member Name:").grid(row=1, column=0)
+        self.uName = tk.StringVar()
+        uNameEntry = tk.Entry(block3, textvariable=self.uName).grid(row=1, column=1)
         
-        mNumberLabel = tk.Label(block3,text="Member Number:").grid(row=2, column=0)
-        self.mNumber = tk.StringVar()
-        mNumberEntry = tk.Entry(block3, textvariable=self.mNumber).grid(row=2, column=1)
+        uNumberLabel = tk.Label(block3,text="Member Number:").grid(row=2, column=0)
+        self.uNumber = tk.StringVar()
+        uNumberEntry = tk.Entry(block3, textvariable=self.uNumber).grid(row=2, column=1)
         
-        pNameLabel = tk.Label(block3, text="Provider Name:").grid(row=1, column=0)
-        self.pName = tk.StringVar()
-        pNameEntry = tk.Entry(block3, textvariable=self.pName).grid(row=1, column=1)
+        uNameLabel = tk.Label(block3, text="Provider Name:").grid(row=1, column=0)
+        self.uName = tk.StringVar()
+        uNameEntry = tk.Entry(block3, textvariable=self.uName).grid(row=1, column=1)
         
-        pNumberLabel = tk.Label(block3,text="Provider Number:").grid(row=2, column=0)  
-        self.pNumber = tk.StringVar()
-        pNumberEntry = tk.Entry(block3, textvariable=self.pNumber).grid(row=2, column=1)
+        uNumberLabel = tk.Label(block3,text="Provider Number:").grid(row=2, column=0)  
+        self.uNumber = tk.StringVar()
+        uNumberEntry = tk.Entry(block3, textvariable=self.uNumber).grid(row=2, column=1)
         
-        mFileLabel = tk.Label(block3, text="Member File Name:").grid(row=3, column=0)
-        self.mFile = tk.StringVar()
-        mFileEntry = tk.Entry(block3, textvariable=self.mFile).grid(row=3, column=1)
+        uFileLabel = tk.Label(block3, text="Member File Name:").grid(row=3, column=0)
+        self.uFile = tk.StringVar()
+        uFileEntry = tk.Entry(block3, textvariable=self.uFile).grid(row=3, column=1)
         
-        sNameLabel = tk.Label(block3, text="Service name (20 characters):").grid(row=4, column=0)
-        self.sName = tk.StringVar()
-        sNameEntry = tk.Entry(block3, textvariable=self.sName).grid(row=4, column=1)
+        uNameLabel = tk.Label(block3, text="Service name (20 characters):").grid(row=4, column=0)
+        self.uName = tk.StringVar()
+        uNameEntry = tk.Entry(block3, textvariable=self.uName).grid(row=4, column=1)
         
-        sCodeLabel = tk.Label(block3, text="Service code (6 digit):").grid(row=5, column=0)
-        self.sCode = tk.StringVar()
-        sCodeEntry = tk.Entry(block3, textvariable=self.sCode).grid(row=5, column=1)
+        uCodeLabel = tk.Label(block3, text="Service code (6 digit):").grid(row=5, column=0)
+        self.uCode = tk.StringVar()
+        uCodeEntry = tk.Entry(block3, textvariable=self.uCode).grid(row=5, column=1)
         
         # feeLabel = tk.Label(tab6, text="fee (up to $999.99):").grid(row=6, column=0)
         # self.fee = tk.StringVar()
         # feeEntry = tk.Entry(tab6, textvariable=self.fee).grid(row=6, column=1)
         
-        commentLabel = tk.Label(block3, text="comments(100 characters)(optional):").grid(row=6, column=0)
-        self.comment = tk.StringVar()
-        commentEntry = tk.Entry(block3, textvariable=self.comment).grid(row=7, column=0, ipadx=20,ipady=30)
+        ucommentLabel = tk.Label(block3, text="comments(100 characters)(optional):").grid(row=6, column=0)
+        self.ucomment = tk.StringVar()
+        ucommentEntry = tk.Entry(block3, textvariable=self.ucomment).grid(row=7, column=0, ipadx=20,ipady=30)
         
         tk.Button(block3, text = 'Update Claim', fg = 'blue',command = self.updateServiceClaim).grid(row=9, column=0)
         
@@ -655,15 +655,15 @@ class ChocAnGUI:
            tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
         
     def removeServiceClaim(self):
-        Manager.removeClaim(Manager, self.mName.get(), self.mFile.get())
+        Manager.removeClaim(Manager, self.rName.get(), self.rFile.get())
         
     def updateServiceClaim(self):
         obj = open("ServiceList.txt","r")
         data = obj.read()
         codes = ast.literal_eval(data)
         obj.close
-        if int(self.sCode.get()) in codes:
-            Manager.makeClaim(Manager, self.mName.get(), self.mNumber.get(), self.pName,get(), self.pNumber.get(), self.sName.get(), self.sCode.get(), float(codes.get(int(self.sCode.get()))), self.comment.get())
+        if int(self.uCode.get()) in codes:
+            Manager.makeClaim(Manager, self.uName.get(), self.uNumber.get(), self.uName,get(), self.uNumber.get(), self.uName.get(), self.uCode.get(), float(codes.get(int(self.uCode.get()))), self.ucomment.get())
         else:
            tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
       
