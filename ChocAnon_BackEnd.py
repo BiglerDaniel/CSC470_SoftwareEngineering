@@ -9,8 +9,7 @@ import shutil
 import os, glob
 dir_path = os.path.dirname(os.path.realpath(__file__))
 from datetime import datetime, timedelta
-now = datetime.now()
-dt_string = now.strftime("%m-%d-%Y %H:%M:%S")
+
 
 class Member():
     def __init__(self,name,number,address,city,state,zipCode,status):
@@ -114,10 +113,11 @@ class Provider(Member):
             f.write("\n")
             f.write(f"Date of Expiration\n----------\n{expDate}")
             f.close()
-        
+            
     
     def makeClaim(self,serviceName, serviceCode, fee, comments):
         #serviceName = input('Service name (20 characters):\n')
+        now = datetime.now()
         currentDate = now.strftime("%m-%d-%Y %H:%M:%S")
         serviceDate = now.strftime("%m-%d-%Y")
         #serviceCode = input('Service code (6 digit):\n')
@@ -313,6 +313,7 @@ class Manager():
         Member.setInfo(Member, mUserName, memNum)
         Provider.setInfo(Provider, pUserName, proNum)
         #serviceName = input('Service name (20 characters):\n')
+        now = datetime.now()
         currentDate = now.strftime("%m-%d-%Y %H:%M:%S")
         serviceDate = now.strftime("%m-%d-%Y")
         #serviceCode = input('Service code (6 digit):\n')
@@ -371,6 +372,7 @@ class Manager():
             return "File does not exist"
         else:
             #serviceName = input('Service name (20 characters):\n')
+            now = datetime.now()
             currentDate = now.strftime("%m-%d-%Y %H:%M:%S")
             serviceDate = now.strftime("%m-%d-%Y")
             #serviceCode = input('Service code (6 digit):\n')
