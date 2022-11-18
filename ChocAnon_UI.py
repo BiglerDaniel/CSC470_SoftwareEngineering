@@ -282,10 +282,10 @@ class ChocAnGUI:
         self.nZipCode = tk.StringVar()
         nZipCodeEntry = tk.Entry(block3, textvariable=self.nZipCode).grid(row=6, column=1)
         
-        self.accCheck = tk.IntVar()
-        accCheckLabel = tk.Label(block3,text="Is this an Employee?:").grid(row=7, column=0)
-        tk.Radiobutton(block3, text = 'Yes',variable = self.accCheck, value = 1).grid(row=7, column=1) 
-        tk.Radiobutton(block3, text = 'No',variable = self.accCheck, value = -1).grid(row=7, column=2) 
+        self.nAccCheck = tk.IntVar()
+        nAccCheckLabel = tk.Label(block3,text="Is this an Employee?:").grid(row=7, column=0)
+        tk.Radiobutton(block3, text = 'Yes',variable = self.nAccCheck, value = 1).grid(row=7, column=1) 
+        tk.Radiobutton(block3, text = 'No',variable = self.nAccCheck, value = -1).grid(row=7, column=2) 
         
         tk.Button(block3, text = 'Update member', fg = 'blue',command = self.updateAccount).grid(row=8, column=0)
         
@@ -629,7 +629,7 @@ class ChocAnGUI:
         Manager.removeAccount(int(self.rNumber.get()))
         
     def updateAccount(self):
-        Manager.updateAccount(self.nName.get(), int(self.nNumber.get()), self.nAddr.get(), self.nCity.get(), self.nState.get(), self.nZipCode.get(),self.accCheck.get())
+        Manager.updateAccount(self.nName.get(), int(self.nNumber.get()), self.nAddr.get(), self.nCity.get(), self.nState.get(), self.nZipCode.get(),self.nAccCheck.get())
     
     def statusAccount(self):
         Provider.Suspend()
