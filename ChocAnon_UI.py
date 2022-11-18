@@ -353,35 +353,35 @@ class ChocAnGUI:
         self.uNumber = tk.StringVar()
         uNumberEntry = tk.Entry(block3, textvariable=self.uNumber).grid(row=2, column=1)
         
-        uNameLabel = tk.Label(block3, text="Provider Name:").grid(row=1, column=0)
-        self.uName = tk.StringVar()
-        uNameEntry = tk.Entry(block3, textvariable=self.uName).grid(row=1, column=1)
+        upNameLabel = tk.Label(block3, text="Provider Name:").grid(row=3, column=0)
+        self.upName = tk.StringVar()
+        upNameEntry = tk.Entry(block3, textvariable=self.uName).grid(row=3, column=1)
         
-        uNumberLabel = tk.Label(block3,text="Provider Number:").grid(row=2, column=0)  
-        self.uNumber = tk.StringVar()
-        uNumberEntry = tk.Entry(block3, textvariable=self.uNumber).grid(row=2, column=1)
+        upNumberLabel = tk.Label(block3,text="Provider Number:").grid(row=4, column=0)  
+        self.upNumber = tk.StringVar()
+        upNumberEntry = tk.Entry(block3, textvariable=self.uNumber).grid(row=4, column=1)
         
-        uFileLabel = tk.Label(block3, text="Member File Name:").grid(row=3, column=0)
+        uFileLabel = tk.Label(block3, text="Member File Name:").grid(row=5, column=0)
         self.uFile = tk.StringVar()
-        uFileEntry = tk.Entry(block3, textvariable=self.uFile).grid(row=3, column=1)
+        uFileEntry = tk.Entry(block3, textvariable=self.uFile).grid(row=5, column=1)
         
-        uNameLabel = tk.Label(block3, text="Service name (20 characters):").grid(row=4, column=0)
+        uNameLabel = tk.Label(block3, text="Service name (20 characters):").grid(row=6, column=0)
         self.uName = tk.StringVar()
-        uNameEntry = tk.Entry(block3, textvariable=self.uName).grid(row=4, column=1)
+        uNameEntry = tk.Entry(block3, textvariable=self.uName).grid(row=6, column=1)
         
-        uCodeLabel = tk.Label(block3, text="Service code (6 digit):").grid(row=5, column=0)
+        uCodeLabel = tk.Label(block3, text="Service code (6 digit):").grid(row=7, column=0)
         self.uCode = tk.StringVar()
-        uCodeEntry = tk.Entry(block3, textvariable=self.uCode).grid(row=5, column=1)
+        uCodeEntry = tk.Entry(block3, textvariable=self.uCode).grid(row=7, column=1)
         
         # feeLabel = tk.Label(tab6, text="fee (up to $999.99):").grid(row=6, column=0)
         # self.fee = tk.StringVar()
         # feeEntry = tk.Entry(tab6, textvariable=self.fee).grid(row=6, column=1)
         
-        ucommentLabel = tk.Label(block3, text="comments(100 characters)(optional):").grid(row=6, column=0)
+        ucommentLabel = tk.Label(block3, text="comments(100 characters)(optional):").grid(row=8, column=0)
         self.ucomment = tk.StringVar()
-        ucommentEntry = tk.Entry(block3, textvariable=self.ucomment).grid(row=7, column=0, ipadx=20,ipady=30)
+        ucommentEntry = tk.Entry(block3, textvariable=self.ucomment).grid(row=9, column=0, ipadx=20,ipady=30)
         
-        tk.Button(block3, text = 'Update Claim', fg = 'blue',command = self.updateServiceClaim).grid(row=9, column=0)
+        tk.Button(block3, text = 'Update Claim', fg = 'blue',command = self.updateServiceClaim).grid(row=10, column=0)
         
         #Tab 7
         block1 = tk.LabelFrame(tab3, text="Submit Report", width=100,
