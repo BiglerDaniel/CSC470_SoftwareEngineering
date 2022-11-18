@@ -312,6 +312,7 @@ class Manager():
         pUserName = pUsernameLst[0][0]+pUsernameLst[-1]
         Member.setInfo(Member, mUserName, memNum)
         Provider.setInfo(Provider, pUserName, proNum)
+        print(mUserName,pUserName)
         #serviceName = input('Service name (20 characters):\n')
         currentDate = now.strftime("%m-%d-%Y %H:%M:%S")
         serviceDate = now.strftime("%m-%d-%Y")
@@ -486,4 +487,5 @@ class Manager():
 # print(now)
 # print(dt_string)
 ##Manager.removeAccount(1232)
+#Manager.addClaim(Manager, 'Bob Laker', 804452505, 'Sam Smith', 1233, 'Test', 202020, 75.00, 'N/A')
 

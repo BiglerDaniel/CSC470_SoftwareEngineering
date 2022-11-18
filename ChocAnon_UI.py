@@ -117,7 +117,7 @@ class ChocAnGUI:
                   height=100, borderwidth=5, relief="sunken")
         block4.grid(column=0, row=0)
         mNameLabel = tk.Label(block4, text="Member Name:").grid(row=1, column=0)
-        self.mName = tk.StringVar()
+        self.m1Name = tk.StringVar()
         mNameEntry = tk.Entry(block4, textvariable=self.mName).grid(row=1, column=1)
         
         mNumberLabel = tk.Label(block4,text="Member Number:").grid(row=2, column=0)  
@@ -293,21 +293,21 @@ class ChocAnGUI:
         block1 = tk.LabelFrame(tab2, text="Add Claim", width=100,
                   height=100, borderwidth=5, relief="sunken")
         block1.grid(column=0, row=0)
-        mNameLabel = tk.Label(block1, text="Member Name:").grid(row=1, column=0)
-        self.mName = tk.StringVar()
-        mNameEntry = tk.Entry(block1, textvariable=self.mName).grid(row=1, column=1)
+        m1NameLabel = tk.Label(block1, text="Member Name:").grid(row=1, column=0)
+        self.m1Name = tk.StringVar()
+        m1NameEntry = tk.Entry(block1, textvariable=self.m1Name).grid(row=1, column=1)
         
-        mNumberLabel = tk.Label(block1,text="Member Number:").grid(row=2, column=0)  
-        self.mNumber = tk.StringVar()
-        mNumberEntry = tk.Entry(block1, textvariable=self.mNumber).grid(row=2, column=1)
+        m1NumberLabel = tk.Label(block1,text="Member Number:").grid(row=2, column=0)  
+        self.m1Number = tk.StringVar()
+        m1NumberEntry = tk.Entry(block1, textvariable=self.m1Number).grid(row=2, column=1)
         
-        pNameLabel = tk.Label(block1, text="Provider Name:").grid(row=3, column=0)
-        self.pName = tk.StringVar()
-        pNameEntry = tk.Entry(block1, textvariable=self.pName).grid(row=3, column=1)
+        p1NameLabel = tk.Label(block1, text="Provider Name:").grid(row=3, column=0)
+        self.p1Name = tk.StringVar()
+        p1NameEntry = tk.Entry(block1, textvariable=self.p1Name).grid(row=3, column=1)
         
-        pNumberLabel = tk.Label(block1,text="Provider Number:").grid(row=4, column=0)  
-        self.pNumber = tk.StringVar()
-        pNumberEntry = tk.Entry(block1, textvariable=self.pNumber).grid(row=4, column=1)
+        p1NumberLabel = tk.Label(block1,text="Provider Number:").grid(row=4, column=0)  
+        self.p1Number = tk.StringVar()
+        p1NumberEntry = tk.Entry(block1, textvariable=self.p1Number).grid(row=4, column=1)
         
         sNameLabel = tk.Label(block1, text="Service name (20 characters):").grid(row=5, column=0)
         self.sName = tk.StringVar()
@@ -336,7 +336,7 @@ class ChocAnGUI:
         rNameEntry = tk.Entry(block2, textvariable=self.mName).grid(row=1, column=1)
         
         rFileLabel = tk.Label(block2, text="Member File Name:").grid(row=2, column=0)
-        self.mFile = tk.StringVar()
+        self.rFile = tk.StringVar()
         rFileEntry = tk.Entry(block2, textvariable=self.rFile).grid(row=2, column=1)
         
         tk.Button(block2, text = 'Remove Claim', fg = 'red',command = self.removeServiceClaim).grid(row=3, column=0)
@@ -650,7 +650,7 @@ class ChocAnGUI:
         codes = ast.literal_eval(data)
         obj.close
         if int(self.sCode.get()) in codes:
-            Manager.addClaim(Manager, self.mName.get(), self.mNumber.get(), self.pName.get(), self.pNumber.get(), self.sName.get(), self.sCode.get(), float(codes.get(int(self.sCode.get()))), self.comment.get())
+            Manager.addClaim(Manager, self.m1Name.get(), int(self.m1Number.get()), self.p1Name.get(), int(self.p1Number.get()), self.sName.get(), self.sCode.get(), float(codes.get(int(self.sCode.get()))), self.comment.get())
         else:
            tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
         
@@ -663,7 +663,7 @@ class ChocAnGUI:
         codes = ast.literal_eval(data)
         obj.close
         if int(self.uCode.get()) in codes:
-            Manager.updateClaim(Manager, self.uName.get(), self.uNumber.get(), self.uName,get(), self.uNumber.get(), self.uName.get(), self.uCode.get(), float(codes.get(int(self.uCode.get()))), self.ucomment.get())
+            Manager.updateClaim(Manager, self.uName.get(), int(self.uNumber.get()), self.uName,get(), int(self.uNumber.get()), self.uName.get(), self.uCode.get(), float(codes.get(int(self.uCode.get()))), self.ucomment.get())
         else:
            tk.messagebox.showerror(title="Insufficient Service Code", message="Service Code does not exist")
       
