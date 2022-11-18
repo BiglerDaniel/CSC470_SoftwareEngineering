@@ -114,6 +114,31 @@ class Provider(Member):
             f.write(f"Date of Expiration\n----------\n{expDate}")
             f.close()
             
+    def updateMemberDetails(memberName, fee, pfee, serviceDate):
+        expDate = serviceDate.split('-')
+        expDate[0] = str(int(expDate[0])+1)
+        if int(expDate[0]) > 12:
+            expDate[0] = '1'
+            expDate[3] = str(int(expDate[3])+1)
+        expDate =  '-'.join(expDate)
+        path = dir_path+"\\"+memberName+"\\Details"
+        if not os.path.exists(path):
+            os.makedirs(path)
+            f = open(path+"\\Details.txt", "w")
+            f.write(f"Fee\n----------\nTotal fee: ${fee:.2f}\n")
+            f.write("\n")
+            f.write(f"Date of Expiration\n----------\n{expDate}")
+        else:
+            f = open(path+"\\Details.txt", 'r')
+            content = f.readlines()
+            f.close()
+            nfee = float(content[2][12:]) + fee - pfee
+            f = open(path+"\\Details.txt", "w")
+            f.write(f"Fee\n----------\nTotal fee: ${nfee:.2f}\n")
+            f.write("\n")
+            f.write(f"Date of Expiration\n----------\n{expDate}")
+            f.close()
+            
     
     def makeClaim(self,serviceName, serviceCode, fee, comments):
         #serviceName = input('Service name (20 characters):\n')
@@ -371,6 +396,10 @@ class Manager():
         if found == False:
             return "File does not exist"
         else:
+            ofile = open(path+"\\"+fileName+'.txt', "r")
+            content = ofile.readlines()
+            ofile.close()
+            pfee = float(content[4][6:].rstrip('\n'))
             #serviceName = input('Service name (20 characters):\n')
             now = datetime.now()
             currentDate = now.strftime("%m-%d-%Y %H:%M:%S")
@@ -385,7 +414,7 @@ class Manager():
             f = open(path+"\\"+fileName+'.txt', "w")
             f.write(f"Service Name: {serviceName}\nCurrent date and time: {currentDate}\nService Date: {serviceDate}\nService Code: {serviceCode}\nFee: ${fee}\nMember Name: {memberName}\nMember Number: {memberNumber}\nProvider Name: {providerName}\nProvider Number: {providerNumber}\nComments: {comments}\n")
             f.close()
-        Provider.setMemberDetails(memberName,fee, serviceDate)
+        Provider.updateMemberDetails(memberName,fee, pfee, serviceDate)
         newPath = dir_path+"\\"+providerName+"\\Claims"
         if not os.path.exists(newPath):
             os.makedirs(newPath)
